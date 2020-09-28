@@ -59,7 +59,7 @@ func (q *Queue) Start() {
 				q.TotalBytes -= q.SimTicketBytes
 				q.Enqueue(Call{
 					RPC:              "ticket",
-					Size:             400,
+					Size:             133,
 					SimRoundTripTime: 100 * time.Millisecond,
 				})
 				q.ticketsCount++

@@ -29,7 +29,8 @@ func BenchmarkQueue(b *testing.B) {
 		}
 		q.Wait()
 		q.Close()
-		log.Printf("total bytes sent: %d\ntotal ticket send: %d\ntotal portsend rpc send: 100\n", q.totalBytesSent, q.ticketsCount)
+		r := float64(q.ticketsCount*133) / float64(q.totalBytesSent)
+		log.Printf("total bytes sent: %d\ntotal ticket send: %d %d %f\ntotal portsend rpc send: 100\n", q.totalBytesSent, q.ticketsCount, q.ticketsCount*133, r)
 	}()
 	q.Start()
 }
@@ -56,7 +57,8 @@ func BenchmarkQueue100(b *testing.B) {
 		}
 		q.Wait()
 		q.Close()
-		log.Printf("total bytes sent: %d\ntotal ticket send: %d\ntotal portsend rpc send: 100\n", q.totalBytesSent, q.ticketsCount)
+		r := float64(q.ticketsCount*133) / float64(q.totalBytesSent)
+		log.Printf("total bytes sent: %d\ntotal ticket send: %d %d %f\ntotal portsend rpc send: 100\n", q.totalBytesSent, q.ticketsCount, q.ticketsCount*133, r)
 	}()
 	q.Start()
 }
