@@ -28,6 +28,7 @@ type Queue struct {
 	wg             sync.WaitGroup
 	ticketsCount   uint
 	totalBytesSent uint
+	Verbose        bool
 }
 
 // Wait the queue
@@ -64,7 +65,9 @@ func (q *Queue) Start() {
 				})
 				q.ticketsCount++
 			}
-			log.Printf("Receive %d bytes of %s", c.Size, c.RPC)
+			if q.Verbose {
+				log.Printf("Receive %d bytes of %s", c.Size, c.RPC)
+			}
 			time.Sleep(c.SimRoundTripTime)
 			q.wg.Done()
 		}
